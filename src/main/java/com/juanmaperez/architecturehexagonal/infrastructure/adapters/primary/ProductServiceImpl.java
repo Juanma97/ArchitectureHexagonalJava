@@ -14,7 +14,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     @Override
-    public Product addProduct(ProductVO productVO) {
-        return productRepository.addProduct(productVO);
+    public Product addProduct(Product product) {
+        return productRepository.addProduct(product);
     }
 }

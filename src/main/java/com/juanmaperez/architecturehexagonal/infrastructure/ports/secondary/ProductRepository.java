@@ -5,5 +5,5 @@ import com.juanmaperez.architecturehexagonal.infrastructure.domain.Product;
 import org.springframework.http.ResponseEntity;
 
 public interface ProductRepository {
-    Product addProduct(final ProductVO productVO);
+    Product addProduct(final Product product);
 }

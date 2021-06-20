@@ -14,7 +14,10 @@ public class ProductMySQLDatabase implements ProductRepository {
     public static List<Product> products = new ArrayList<>();
 
     @Override
-    public Product addProduct(ProductVO productVO) {
+    public Product addProduct(Product product) {
+        if (products.add(product)) {
+            return product;
+        }
         return null;
     }
 }

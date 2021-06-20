@@ -4,7 +4,6 @@ import com.juanmaperez.architecturehexagonal.api.vo.ProductVO;
 import com.juanmaperez.architecturehexagonal.infrastructure.domain.Product;
 import com.juanmaperez.architecturehexagonal.infrastructure.domain.ProductData;
 import org.junit.jupiter.api.Test;
-import org.mapstruct.factory.Mappers;
 
 import static org.junit.jupiter.api.Assertions.*;
 
