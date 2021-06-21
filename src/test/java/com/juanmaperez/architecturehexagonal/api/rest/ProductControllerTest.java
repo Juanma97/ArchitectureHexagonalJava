@@ -2,12 +2,12 @@ package com.juanmaperez.architecturehexagonal.api.rest;
 
 import com.juanmaperez.architecturehexagonal.api.converters.ProductConverter;
 import com.juanmaperez.architecturehexagonal.api.vo.ProductVO;
+import com.juanmaperez.architecturehexagonal.infrastructure.domain.Product;
 import com.juanmaperez.architecturehexagonal.infrastructure.ports.primary.ProductService;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class ProductControllerTest {
 
@@ -19,8 +19,21 @@ public class ProductControllerTest {
     @Test
     public void shouldCallServiceToAddProduct() {
         ProductVO productVO = ProductVO.builder().build();
+        Product product = Product.builder().build();
 
         when(productConverter.convertToVO(any())).thenReturn(productVO);
+        when(productConverter.converToDomain(productVO)).thenReturn(product);
         sut.addProduct(productVO);
+
+        verify(productService).addProduct(product);
+    }
+
+    @Test
+    public void shouldCallServiceToDeleteProduct() throws Exception {
+        final int idToDelete = 1;
+
+        sut.deleteProduct(idToDelete);
+
+        verify(productService).deleteProduct(idToDelete);
     }
 }

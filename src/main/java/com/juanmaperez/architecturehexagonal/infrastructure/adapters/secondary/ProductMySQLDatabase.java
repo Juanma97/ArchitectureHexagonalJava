@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class ProductMySQLDatabase implements ProductRepository {
@@ -19,5 +20,12 @@ public class ProductMySQLDatabase implements ProductRepository {
             return product;
         }
         return null;
+    }
+
+    @Override
+    public void deleteProduct(int idToDelete) {
+        products = products.stream()
+                .filter(product -> product.getId() !=  idToDelete)
+                .collect(Collectors.toList());
     }
 }

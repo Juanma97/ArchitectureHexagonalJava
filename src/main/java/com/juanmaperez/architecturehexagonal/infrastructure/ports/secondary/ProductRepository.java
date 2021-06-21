@@ -6,4 +6,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface ProductRepository {
     Product addProduct(final Product product);
+
+    void deleteProduct(final int idToDelete);
 }

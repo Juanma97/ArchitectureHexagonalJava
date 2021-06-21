@@ -6,6 +6,7 @@ import com.juanmaperez.architecturehexagonal.infrastructure.ports.primary.Produc
 import com.juanmaperez.architecturehexagonal.infrastructure.ports.secondary.ProductRepository;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -20,5 +21,21 @@ class ProductServiceImplTest {
         sut.addProduct(product);
 
         verify(productRepository).addProduct(product);
+    }
+
+    @Test
+    public void shouldCallRepositoryToDeleteProduct() throws Exception {
+        final int idToDelete = 1;
+
+        sut.deleteProduct(idToDelete);
+
+        verify(productRepository).deleteProduct(idToDelete);
+    }
+
+    @Test
+    public void shouldThrowExceptioIfNumberIsNegative() {
+        final int idToDelete = -2;
+
+        assertThrows(Exception.class, () -> sut.deleteProduct(idToDelete));
     }
 }

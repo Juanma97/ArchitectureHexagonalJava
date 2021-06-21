@@ -17,4 +17,13 @@ public class ProductServiceImpl implements ProductService {
     public Product addProduct(Product product) {
         return productRepository.addProduct(product);
     }
+
+    @Override
+    public void deleteProduct(int idToDelete) throws Exception {
+        if (idToDelete < 0) {
+            throw new Exception("Id not valid");
+        }
+
+        productRepository.deleteProduct(idToDelete);
+    }
 }

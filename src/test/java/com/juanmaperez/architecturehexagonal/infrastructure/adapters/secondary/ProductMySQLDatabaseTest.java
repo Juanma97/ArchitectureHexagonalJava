@@ -17,4 +17,17 @@ public class ProductMySQLDatabaseTest {
 
         assertEquals(1, ProductMySQLDatabase.products.size());
     }
+
+    @Test
+    public void shouldDeleteProductOfDatabase() {
+        final int idToDelete = 1;
+
+        final Product product = Product.builder().id(idToDelete).build();
+
+        sut.addProduct(product);
+
+        sut.deleteProduct(idToDelete);
+
+        assertEquals(0, ProductMySQLDatabase.products.size());
+    }
 }
