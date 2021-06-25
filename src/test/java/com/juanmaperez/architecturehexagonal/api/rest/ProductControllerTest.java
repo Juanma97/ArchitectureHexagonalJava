@@ -47,4 +47,11 @@ public class ProductControllerTest {
 
         verify(productService).findProductById(idToSearch);
     }
+
+    @Test
+    public void shouldCallServiceToListProducts() {
+        sut.getProducts();
+
+        verify(productService).getProducts();
+    }
 }

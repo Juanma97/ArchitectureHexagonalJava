@@ -38,4 +38,9 @@ public class ProductMySQLDatabase implements ProductRepository {
 
         return productSearched.get(0);
     }
+
+    @Override
+    public List<Product> getProducts() {
+        return products;
+    }
 }

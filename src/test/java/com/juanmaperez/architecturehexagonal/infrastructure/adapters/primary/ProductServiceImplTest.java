@@ -47,4 +47,11 @@ class ProductServiceImplTest {
 
         verify(productRepository).findProductById(idToSearch);
     }
+
+    @Test
+    public void shouldCallRepositoryToGetProducts() {
+        sut.getProducts();
+
+        verify(productRepository).getProducts();
+    }
 }

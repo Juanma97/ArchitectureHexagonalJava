@@ -7,6 +7,8 @@ import com.juanmaperez.architecturehexagonal.infrastructure.ports.secondary.Prod
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -30,5 +32,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findProductById(int idToSearch) {
         return productRepository.findProductById(idToSearch);
+    }
+
+    @Override
+    public List<Product> getProducts() {
+        return productRepository.getProducts();
     }
 }

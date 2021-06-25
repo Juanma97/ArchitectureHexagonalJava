@@ -3,6 +3,8 @@ package com.juanmaperez.architecturehexagonal.infrastructure.adapters.secondary;
 import com.juanmaperez.architecturehexagonal.infrastructure.domain.Product;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProductMySQLDatabaseTest {
@@ -43,6 +45,29 @@ public class ProductMySQLDatabaseTest {
 
         assertEquals(idToSearch, productSearched.getId());
 
+    }
 
+    @Test
+    public void shouldReturnAllProducts() {
+        final Product product1 = Product.builder().id(1).build();
+        final Product product2 = Product.builder().id(2).build();
+        final Product product3 = Product.builder().id(3).build();
+        final Product product4 = Product.builder().id(4).build();
+
+        sut.addProduct(product1);
+        sut.addProduct(product2);
+        sut.addProduct(product3);
+        sut.addProduct(product4);
+
+        List<Product> products = sut.getProducts();
+
+        assertEquals(4, products.size());
+
+        int idExpected = 1;
+
+        for(Product product : products) {
+            assertEquals(idExpected, product.getId());
+            idExpected++;
+        }
     }
 }
