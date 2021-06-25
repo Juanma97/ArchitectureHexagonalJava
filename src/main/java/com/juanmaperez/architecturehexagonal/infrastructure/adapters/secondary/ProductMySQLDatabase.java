@@ -28,4 +28,14 @@ public class ProductMySQLDatabase implements ProductRepository {
                 .filter(product -> product.getId() !=  idToDelete)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Product findProductById(int idToSearch) {
+        List<Product> productSearched = new ArrayList<>();
+        productSearched = products.stream()
+                .filter(product -> product.getId() ==  idToSearch)
+                .collect(Collectors.toList());
+
+        return productSearched.get(0);
+    }
 }

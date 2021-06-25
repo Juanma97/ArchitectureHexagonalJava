@@ -38,4 +38,13 @@ class ProductServiceImplTest {
 
         assertThrows(Exception.class, () -> sut.deleteProduct(idToDelete));
     }
+
+    @Test
+    public void shouldCallRepositoryToFindProductById() {
+        final int idToSearch = 1;
+
+        sut.findProductById(idToSearch);
+
+        verify(productRepository).findProductById(idToSearch);
+    }
 }

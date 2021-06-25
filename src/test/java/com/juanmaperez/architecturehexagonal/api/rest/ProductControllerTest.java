@@ -36,4 +36,15 @@ public class ProductControllerTest {
 
         verify(productService).deleteProduct(idToDelete);
     }
+
+    @Test
+    public void shouldCallServiceToFindProduct() {
+        ProductVO productVO = ProductVO.builder().build();
+        final int idToSearch = 1;
+
+        when(productConverter.convertToVO(any())).thenReturn(productVO);
+        sut.findProductById(idToSearch);
+
+        verify(productService).findProductById(idToSearch);
+    }
 }

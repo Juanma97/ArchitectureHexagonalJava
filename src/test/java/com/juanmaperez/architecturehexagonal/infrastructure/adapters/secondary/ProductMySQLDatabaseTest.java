@@ -30,4 +30,19 @@ public class ProductMySQLDatabaseTest {
 
         assertEquals(0, ProductMySQLDatabase.products.size());
     }
+
+    @Test
+    public void shouldFindProductById() {
+        final int idToSearch = 1;
+
+        final Product product = Product.builder().id(idToSearch).build();
+
+        sut.addProduct(product);
+
+        Product productSearched = sut.findProductById(idToSearch);
+
+        assertEquals(idToSearch, productSearched.getId());
+
+
+    }
 }

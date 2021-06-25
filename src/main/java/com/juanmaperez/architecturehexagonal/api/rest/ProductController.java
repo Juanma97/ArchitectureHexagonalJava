@@ -31,4 +31,10 @@ public class ProductController {
     public void deleteProduct(@PathVariable final int idToDelete) throws Exception {
         productService.deleteProduct(idToDelete);
     }
+
+
+    @GetMapping("/{idToSearch}")
+    public ResponseEntity<ProductVO> findProductById(@PathVariable final int idToSearch) {
+        return ResponseEntity.of(Optional.of(productConverter.convertToVO(productService.findProductById(idToSearch))));
+    }
 }

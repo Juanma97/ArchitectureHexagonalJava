@@ -7,4 +7,6 @@ public interface ProductService {
     Product addProduct(final Product productVO);
 
     void deleteProduct(final int idToDelete) throws Exception;
+
+    Product findProductById(final int idToSearch);
 }
