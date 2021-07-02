@@ -1,8 +1,10 @@
 package com.juanmaperez.architecturehexagonal.infrastructure.adapters.secondary;
 
 import com.juanmaperez.architecturehexagonal.infrastructure.domain.Product;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,6 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProductMySQLDatabaseTest {
 
     private final ProductMySQLDatabase sut = new ProductMySQLDatabase();
+
+    @AfterEach
+    public void restoreDatabase() {
+        ProductMySQLDatabase.products = new ArrayList<>();
+    }
 
     @Test
     public void shouldAddProductsToDatabase() {
